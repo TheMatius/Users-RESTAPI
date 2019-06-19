@@ -16,8 +16,8 @@ mongoose.connect(process.env.urlDB, (err, res) => {
     if (err) throw err;
 
     console.log('Database online!');
-});
+}).catch(err => console.log(err));
 
 app.listen(process.env.PORT, () => {
     console.log(`Listen the port ${ process.env.PORT }`);
-})
+});
