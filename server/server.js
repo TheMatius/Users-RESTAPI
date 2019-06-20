@@ -14,11 +14,7 @@ app.use(require('./routes/user.route'));
 
 mongoose.connect(process.env.urlDB)
     .then(() => console.log('Database online!'))
-    .catch(err => {
-        console.log('Estoy en el error');
-
-        if (err) throw err;
-    });
+    .catch(err => { if (err) throw err });
 
 app.listen(process.env.PORT, () => {
     console.log(`Listen the port ${ process.env.PORT }`);
