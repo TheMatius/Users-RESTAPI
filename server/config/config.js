@@ -13,10 +13,10 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 // ========================
 let urlDB;
 
-// if (process.env.NODE_ENV === 'dev') {
-//     urlDB = 'mongodb://localhost:27017/coffee';
-// } else {
-urlDB = `mongodb+srv://admin:12345@coffee-jqhuw.mongodb.net/test?retryWrites=true&w=majority`;
-// }
+if (process.env.NODE_ENV === 'dev') {
+    urlDB = 'mongodb://localhost:27017/coffee';
+} else {
+    urlDB = 'mongodb+srv://admin:12345@coffee-jqhuw.mongodb.net/test?retryWrites=true&w=majority';
+}
 
 process.env.urlDB = urlDB;
