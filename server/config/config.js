@@ -12,11 +12,12 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 //         Database
 // ========================
 let urlDB;
+let user = process.env.name;
 
 if (process.env.NODE_ENV === 'dev') {
     urlDB = 'mongodb://localhost:27017/coffee';
 } else {
-    urlDB = 'mongodb+srv://admin:12345@coffee-jqhuw.mongodb.net/test?retryWrites=true&w=majority';
+    urlDB = process.env.MONGO_URI;
 }
 
 process.env.urlDB = urlDB;
