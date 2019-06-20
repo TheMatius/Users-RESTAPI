@@ -26,7 +26,7 @@ mongoose.connect(process.env.urlDB, options)
     .then(() => console.log('Database online!'))
     .catch(err => {
         if (err) throw err;
-
+        console.log('Estoy en el error');
         console.log(err);
     });
 

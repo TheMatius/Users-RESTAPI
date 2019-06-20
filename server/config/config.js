@@ -12,7 +12,6 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 //         Database
 // ========================
 let urlDB;
-// let password = encodeURI('12345');
 
 // if (process.env.NODE_ENV === 'dev') {
 //     urlDB = 'mongodb://localhost:27017/coffee';
