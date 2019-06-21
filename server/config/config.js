@@ -9,6 +9,16 @@ process.env.PORT = process.env.PORT || 8080;
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 // ========================
+//    Token Expire Time
+// ========================
+process.env.EXPIRE_TOKEN = 60 * 60 * 24 * 30;
+
+// ========================
+//   Authentication seed
+// ========================
+process.env.AUTH_SEED = process.env.AUTH_SEED || 'only-seed-dev';
+
+// ========================
 //         Database
 // ========================
 let urlDB;

@@ -1,10 +1,12 @@
 const express = require('express');
-const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
+const User = require('../models/user.model');
 const app = express();
 
-app.get('/user', (req, res) => {
+const { checkToken, checkAdmin } = require('../middlewares/auth.middleware');
+
+app.get('/user', checkToken, (req, res) => {
     let from = Number(req.query.from) || 0;
     let limit = Number(req.query.limit) || 5;
 
@@ -31,7 +33,7 @@ app.get('/user', (req, res) => {
 });
 
 // Cuando se ejecutan los middleware en el body se encuentran los elementos que se reciben
-app.post('/user', (req, res) => {
+app.post('/user', [checkToken, checkAdmin], (req, res) => {
     let body = req.body;
     let user = new User({
         name: body.name,
@@ -56,7 +58,7 @@ app.post('/user', (req, res) => {
     });
 });
 
-app.put('/user/:id', (req, res) => {
+app.put('/user/:id', [checkToken, checkAdmin], (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['name', 'email', 'img', 'role', 'status']);
 
@@ -75,7 +77,7 @@ app.put('/user/:id', (req, res) => {
     });
 });
 
-app.delete('/user/:id', (req, res) => {
+app.delete('/user/:id', [checkToken, checkAdmin], (req, res) => {
     let id = req.params.id;
 
     // Con esta instrucción se elimina el registro de la db

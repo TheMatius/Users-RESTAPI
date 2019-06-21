@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 // Los app.use son middlewares, son funciones que se disparan siempre
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(require('./routes/user.route'));
+app.use(require('./routes/index.route'));
 
 mongoose.connect(process.env.urlDB)
     .then(() => console.log('Database online!'))
